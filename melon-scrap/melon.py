@@ -14,7 +14,7 @@ TODAY_DATE = datetime.today().strftime('%Y%m%d')
 MUSIC_COLUMNS = ['제목', '아티스트', '앨범']
 PLAYLIST_URL = 'https://www.melon.com/mymusic/playlist/mymusicplaylist_list.htm'
 MUSIC_URL = 'https://www.melon.com/mymusic/playlist/mymusicplaylistview_inform.htm'
-EXCEL_PATH = "excel"
+EXCEL_PATH = "../excel"
 
 
 # 플레이리스트 키 가져오기
@@ -80,7 +80,7 @@ def write_excel(data_frame_list, filename):
     if not os.path.exists(EXCEL_PATH):
         os.makedirs(EXCEL_PATH)
 
-    with pd.ExcelWriter("excel/" + filename) as writer:
+    with pd.ExcelWriter(EXCEL_PATH + "/" + filename) as writer:
         for data_frame in data_frame_list:
             sheet_name = data_frame.get('sheet')
 
@@ -117,6 +117,3 @@ def playlist(playlist_key):
 
     driver.quit()
 
-
-if __name__ == "__main__":
-    member('56195228')
